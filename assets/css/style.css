@@ -1,0 +1,613 @@
+/* assets/css/style.css */
+/* Estilos principales del sistema H&H MINERIA */
+
+:root {
+    --primary-orange: #f59e0b;
+    --primary-orange-dark: #d97706;
+    --primary-orange-light: #fbbf24;
+    --bg-dark: #0a0c15;
+    --bg-darker: #06070d;
+    --card-bg: rgba(18, 22, 35, 0.7);
+    --card-bg-solid: #121623;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-light: #e5e7eb;
+    --text-gray: #9ca3af;
+    --text-muted: #6b7280;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    color: var(--text-light);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ========== SIDEBAR ========== */
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, rgba(18, 22, 35, 0.95) 0%, rgba(10, 12, 21, 0.98) 100%);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid var(--border-color);
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.sidebar-header .logo i {
+    font-size: 2.5rem;
+    color: var(--primary-orange);
+    margin-bottom: 10px;
+}
+
+.sidebar-header h3 {
+    color: var(--primary-orange);
+    font-weight: 700;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.sidebar .nav {
+    padding: 20px 0;
+}
+
+.sidebar .nav-link {
+    color: var(--text-gray);
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 5px 10px;
+    font-weight: 500;
+}
+
+.sidebar .nav-link i {
+    width: 25px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.sidebar .nav-link:hover {
+    color: var(--text-light);
+    background: rgba(245, 158, 11, 0.1);
+    transform: translateX(5px);
+}
+
+.sidebar .nav-link.active {
+    color: var(--primary-orange);
+    background: rgba(245, 158, 11, 0.15);
+    border-left: 3px solid var(--primary-orange);
+}
+
+.user-info {
+    border-top: 1px solid var(--border-color);
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.main-content {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    padding: 25px;
+    min-height: 100vh;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-orange);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-orange-dark);
+}
+
+/* ========== GLASSMORPHISM CARDS ========== */
+.card-glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card-glass:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.card-glass .card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+    font-weight: 600;
+}
+
+.card-glass .card-body {
+    padding: 20px;
+}
+
+/* ========== GRADIENT BUTTONS ========== */
+.btn-gradient {
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+    color: white;
+}
+
+.btn-gradient-outline {
+    background: transparent;
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
+    border-radius: 8px;
+    padding: 9px 23px;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-outline:hover {
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+    color: white;
+}
+
+/* ========== TABLES ========== */
+.table-glass {
+    background: transparent;
+    color: var(--text-light);
+}
+
+.table-glass thead {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.table-glass thead th {
+    border-bottom: 1px solid var(--border-color);
+    color: var(--primary-orange-light);
+    font-weight: 600;
+    padding: 12px;
+}
+
+.table-glass tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table-glass tbody tr:hover {
+    background: rgba(245, 158, 11, 0.08);
+}
+
+.table-glass td {
+    border-color: var(--border-color);
+    vertical-align: middle;
+    padding: 12px;
+}
+
+/* DataTables personalizado */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    color: var(--text-gray) !important;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: var(--text-gray) !important;
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+    margin: 0 2px !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--primary-orange) !important;
+    color: white !important;
+    border-color: var(--primary-orange) !important;
+}
+
+/* ========== FORMS ========== */
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-orange);
+    color: var(--text-light);
+    box-shadow: 0 0 0 0.2rem rgba(245, 158, 11, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-gray);
+}
+
+/* ========== LOGIN PAGE ========== */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.1), transparent);
+    border-radius: 50%;
+    top: -150px;
+    right: -150px;
+}
+
+.login-container::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.05), transparent);
+    border-radius: 50%;
+    bottom: -200px;
+    left: -200px;
+}
+
+.login-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    z-index: 1;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.login-card h2 {
+    color: var(--primary-orange);
+    font-weight: 700;
+}
+
+/* ========== BADGES ========== */
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.badge-success { background: var(--success); }
+.badge-danger { background: var(--danger); }
+.badge-warning { background: var(--warning); color: #000; }
+.badge-info { background: var(--info); }
+
+.badge-baja { background: #10b981; }
+.badge-media { background: #f59e0b; }
+.badge-alta { background: #ef4444; }
+.badge-critica { background: #8b5cf6; }
+
+/* ========== CHARTS ========== */
+.chart-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.chart-container canvas {
+    max-height: 300px;
+    width: 100%;
+}
+
+/* ========== STATS CARDS ========== */
+.stat-card {
+    background: linear-gradient(135deg, rgba(18, 22, 35, 0.8), rgba(10, 12, 21, 0.9));
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-orange);
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: var(--primary-orange);
+    opacity: 0.8;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 10px 0 5px;
+}
+
+.stat-card p {
+    color: var(--text-gray);
+    margin: 0;
+}
+
+/* ========== MODAL ========== */
+.modal-content {
+    background: var(--card-bg-solid);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+}
+
+.modal-header {
+    border-bottom-color: var(--border-color);
+}
+
+.modal-footer {
+    border-top-color: var(--border-color);
+}
+
+.btn-close-white {
+    filter: brightness(0) invert(1);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+    .sidebar {
+        margin-left: -280px;
+    }
+    
+    .sidebar.active {
+        margin-left: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+        background: var(--primary-orange);
+        border: none;
+        border-radius: 8px;
+        padding: 8px 12px;
+        color: white;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 15px;
+    }
+    
+    .stat-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .login-card {
+        margin: 20px;
+        padding: 30px;
+    }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-glass, .stat-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ========== UTILITIES ========== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.bg-glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.transition {
+    transition: all 0.3s ease;
+}/* ========== CORRECCIONES DE VISIBILIDAD ========== */
+
+/* Estadísticas - Textos más visibles */
+.stat-card-mini {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.08));
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 16px;
+    padding: 20px 15px;
+    transition: all 0.3s;
+}
+
+.stat-card-mini h4 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f59e0b !important;
+    margin-bottom: 8px;
+}
+
+.stat-card-mini small {
+    font-size: 0.8rem;
+    color: #d1d5db !important;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.stat-card-mini i {
+    opacity: 0.8;
+}
+
+/* Mejorar visibilidad general de textos pequeños */
+small, .small-text {
+    color: #cbd5e1 !important;
+}
+
+.text-muted {
+    color: #9ca3af !important;
+}
+
+/* Cards */
+.card-glass small, 
+.card-glass .text-muted {
+    color: #cbd5e1 !important;
+}
+
+/* Tablas */
+.table-glass td small {
+    color: #9ca3af !important;
+}/* ========== CORRECCIÓN DE INPUTS Y PLACEHOLDERS ========== */
+
+/* Inputs - texto más claro */
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #f3f4f6 !important;
+    border-radius: 10px;
+    padding: 12px 15px;
+}
+
+/* Texto dentro del input cuando escribes */
+.form-control:focus, .form-select:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #f59e0b;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+/* Placeholders - texto de ejemplo (gris claro visible) */
+.form-control::placeholder {
+    color: #9ca3af !important;
+    opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+    color: #9ca3af !important;
+}
+
+.form-control::-ms-input-placeholder {
+    color: #9ca3af !important;
+}
+
+/* Labels - más visibles */
+.form-label {
+    color: #d1d5db !important;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Texto dentro de selects */
+.form-select option {
+    background: #1f2937;
+    color: #f3f4f6;
+}
+
+/* Inputs en modal */
+.modal .form-control, .modal .form-select {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}/* ========== CORRECCIÓN DE PLACEHOLDERS - TEXTO VISIBLE ========== */
+
+/* Para todos los inputs */
+.form-control::placeholder {
+    color: #cbd5e1 !important;
+    opacity: 1 !important;
+    font-weight: 400;
+}
+
+/* Para inputs dentro del modal */
+.modal .form-control::placeholder {
+    color: #cbd5e1 !important;
+    opacity: 1 !important;
+}
+
+/* Para textarea */
+.form-control::placeholder,
+textarea.form-control::placeholder {
+    color: #cbd5e1 !important;
+    opacity: 1 !important;
+}
+
+/* Para asegurar que se vea en todos los navegadores */
+.form-control::-webkit-input-placeholder { color: #cbd5e1 !important; opacity: 1 !important; }
+.form-control::-moz-placeholder { color: #cbd5e1 !important; opacity: 1 !important; }
+.form-control:-ms-input-placeholder { color: #cbd5e1 !important; opacity: 1 !important; }
+.form-control::-ms-input-placeholder { color: #cbd5e1 !important; opacity: 1 !important; }
