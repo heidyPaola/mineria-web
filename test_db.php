@@ -8,7 +8,7 @@ $host = 'mysql-10b9a518-undac-bf50.k.aivencloud.com';
 $port = '15798';
 $dbname = 'defaultdb';
 $user = 'avnadmin';
-$password = 'AVNS_YMCPCbikAMpC5iZnmJR';
+$password = getenv('DB_PASSWORD') ?: 'AVNS_YMCPCbikAMpC5iZnmJR';
 
 echo "<h2>📊 Datos de conexión:</h2>";
 echo "<ul>";
