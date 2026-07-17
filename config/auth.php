@@ -15,7 +15,7 @@ function isLoggedIn() {
 // Requerir que el usuario esté logueado (si no, redirigir al login)
 function requireLogin() {
     if (!isLoggedIn()) {
-        header('Location: /MINERIA/login.php');
+        header('Location: login.php');
         exit();
     }
 }
@@ -32,7 +32,7 @@ function requireRole($role) {
         header('HTTP/1.0 403 Forbidden');
         echo "<h1>Acceso Denegado (403)</h1>";
         echo "<p>No tienes permiso para acceder a esta sección.</p>";
-        echo "<a href='/MINERIA/index.php'>Volver al Dashboard</a>";
+        echo "<a href='index.php'>Volver al Dashboard</a>";
         exit();
     }
 }
