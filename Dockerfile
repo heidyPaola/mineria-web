@@ -1,22 +1,26 @@
 FROM php:8.2-apache
 
+# Instalar extensiones necesarias para MySQL
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libzip-dev \
+    unzip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install zip \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mysqli
+
 # Habilitar módulos de Apache
 RUN a2enmod rewrite
 
-# Establecer el directorio de trabajo
-WORKDIR /var/www/html
-
-# Copiar todos los archivos del proyecto
+# Copiar todos los archivos del proyecto al servidor
 COPY . /var/www/html/
 
-# Cambiar propietario de los archivos
+# Dar permisos
 RUN chown -R www-data:www-data /var/www/html
-
-# Verificar que index.php existe (para depuración)
-RUN ls -la /var/www/html/
 
 # Exponer el puerto 80
 EXPOSE 80
-
-# Comando para iniciar Apache en primer plano
-CMD ["apache2-foreground"]
