@@ -3,12 +3,12 @@
 
 echo "<h1>🔍 Prueba de conexión a la base de datos</h1>";
 
-// Datos de conexión (los mismos que en las variables de entorno)
+// Datos de conexión (USANDO EL NUEVO USUARIO render_user)
 $host = 'mysql-10b9a518-undac-bf50.k.aivencloud.com';
 $port = '15798';
 $dbname = 'defaultdb';
-$user = 'avnadmin';
-$password = getenv('DB_PASSWORD') ?: 'AVNS_YMCPCbikAMpC5iZnmJR';
+$user = 'render_user';
+$password = 'AVNS_EtZYn04W0bIrnv3AMLV';
 
 echo "<h2>📊 Datos de conexión:</h2>";
 echo "<ul>";
@@ -21,7 +21,7 @@ echo "</ul>";
 echo "<h2>🔗 Intentando conectar...</h2>";
 
 try {
-    // Intentar conexión PDO
+    // Intentar conexión PDO con SSL
     $conn = new PDO(
         "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4",
         $user,
@@ -45,7 +45,6 @@ try {
     echo "<h2 style='color: red;'>❌ Error de conexión</h2>";
     echo "<p><strong>Mensaje:</strong> " . $e->getMessage() . "</p>";
     
-    // Mostrar más detalles del error
     echo "<h3>🔍 Detalles del error:</h3>";
     echo "<ul>";
     echo "<li><strong>Código:</strong> " . $e->getCode() . "</li>";
