@@ -3,12 +3,21 @@
 // Este archivo maneja la conexión a la base de datos MySQL
 
 class Database {
-    // Configuración de la base de datos
-    private $host = "localhost";      // Servidor de base de datos
-    private $db_name = "mineria_control";  // Nombre de la base de datos
-    private $username = "root";       // Usuario de MySQL
-    private $password = "";           // Contraseña de MySQL (vacío en XAMPP por defecto)
+    // Configuración de la base de datos (usa variables de entorno o valores por defecto)
+    private $host;
+    private $db_name;
+    private $username;
+    private $password;
     public $conn;
+
+    // Constructor que lee variables de entorno
+    public function __construct() {
+        // Usar variables de entorno si existen, si no usar valores por defecto
+        $this->host = getenv('DB_HOST') ?: 'localhost';
+        $this->db_name = getenv('DB_NAME') ?: 'mineria_control';
+        $this->username = getenv('DB_USER') ?: 'root';
+        $this->password = getenv('DB_PASSWORD') ?: '';
+    }
 
     // Método para obtener la conexión
     public function getConnection() {
@@ -17,20 +26,20 @@ class Database {
         try {
             // Crear nueva conexión PDO
             $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8mb4",
                 $this->username,
-                $this->password
+                $this->password,
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_EMULATE_PREPARES => false
+                ]
             );
             
-            // Configurar errores de PDO
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-            // Configurar codificación UTF-8
-            $this->conn->exec("set names utf8");
-            
         } catch(PDOException $exception) {
-            // Si hay error, mostrar mensaje
-            echo "Error de conexión: " . $exception->getMessage();
+            // Si hay error, registrar en logs y mostrar mensaje
+            error_log("Error de conexión a la base de datos: " . $exception->getMessage());
+            die("Error de conexión: " . $exception->getMessage());
         }
         
         return $this->conn;
